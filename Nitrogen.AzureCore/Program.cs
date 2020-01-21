@@ -21,6 +21,9 @@ namespace Nitrogen.AzureCore
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                }).UseDefaultServiceProvider(options =>
+                {
+                    options.ValidateScopes = false;
                 });
     }
 }

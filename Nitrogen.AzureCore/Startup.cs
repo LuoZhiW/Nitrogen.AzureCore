@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Nitrogen.Data.Mysql.Data;
 
 namespace Nitrogen.AzureCore
 {
@@ -24,11 +26,23 @@ namespace Nitrogen.AzureCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<MySqlDbContext>(options =>
+            {
+                options.UseMySql(Configuration.GetConnectionString("DefaultConnectionStr"));
+            });
+        }
+
+        private void InitializeDb(DbContext context)
+        {
+            if (context.Database.GetPendingMigrations().Any())
+                context.Database.Migrate();//×Ô¶¯Ö´ÐÐÇ¨ÒÆ
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            var _dBcontext = new MySqlDbContext(app.ApplicationServices.GetRequiredService<DbContextOptions<MySqlDbContext>>());
+            InitializeDb(_dBcontext);
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

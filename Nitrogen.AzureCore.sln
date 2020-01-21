@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nitrogen.AzureCore", "Nitrogen.AzureCore\Nitrogen.AzureCore.csproj", "{FE88958A-DEB8-4045-9A0C-BF8DED6D1DAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nitrogen.Model", "Nitrogen.Model\Nitrogen.Model.csproj", "{68644DAA-8D2A-445A-8E64-B59CF14BFDEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nitrogen.Model", "Nitrogen.Model\Nitrogen.Model.csproj", "{68644DAA-8D2A-445A-8E64-B59CF14BFDEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nitrogen.DataBase", "Nitrogen.DataBase\Nitrogen.DataBase.csproj", "{0474054E-D5FD-4844-89A6-792AECB37F3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nitrogen.Data.Mysql", "Nitrogen.Data.Mysql\Nitrogen.Data.Mysql.csproj", "{3C8FD3F1-5D70-4C9F-9F8D-6677C5D973E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{68644DAA-8D2A-445A-8E64-B59CF14BFDEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68644DAA-8D2A-445A-8E64-B59CF14BFDEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68644DAA-8D2A-445A-8E64-B59CF14BFDEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0474054E-D5FD-4844-89A6-792AECB37F3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0474054E-D5FD-4844-89A6-792AECB37F3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0474054E-D5FD-4844-89A6-792AECB37F3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0474054E-D5FD-4844-89A6-792AECB37F3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C8FD3F1-5D70-4C9F-9F8D-6677C5D973E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C8FD3F1-5D70-4C9F-9F8D-6677C5D973E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C8FD3F1-5D70-4C9F-9F8D-6677C5D973E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C8FD3F1-5D70-4C9F-9F8D-6677C5D973E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
