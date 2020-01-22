@@ -6,6 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Nitrogen.Data.Mysql.Data;
+using Nitrogen.ILogic.SystemILogic;
+using Nitrogen.Logic;
+using Nitrogen.Logic.SystemLogic;
 
 namespace Nitrogen.AzureCore
 {
@@ -26,19 +29,21 @@ namespace Nitrogen.AzureCore
             {
                 options.UseMySql(Configuration.GetConnectionString("DefaultConnectionStr"));
             });
+            services.AddTransient<PermissionsCategoryILogic, PermissionsCategoryLogic>();
+            services.AddTransient<PermissionsILogic, PermissionsLogic>();
         }
 
         private void InitializeDb(DbContext context)
         {
             if (context.Database.GetPendingMigrations().Any())
-                context.Database.Migrate();//自动执行迁移
+                context.Database.Migrate();//项目运行时执行自动迁移
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, MySqlDbContext mySqlDbContext)
         {
-            var _dBcontext = new MySqlDbContext(app.ApplicationServices.GetRequiredService<DbContextOptions<MySqlDbContext>>());
-            InitializeDb(_dBcontext);
+            // var _dBcontext = new MySqlDbContext(app.ApplicationServices.GetRequiredService<DbContextOptions<MySqlDbContext>>());
+            InitializeDb(mySqlDbContext);
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

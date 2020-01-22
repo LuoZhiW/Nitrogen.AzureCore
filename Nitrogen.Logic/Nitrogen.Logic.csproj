@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Nitrogen.Data.Mysql\Nitrogen.Data.Mysql.csproj" />
+    <ProjectReference Include="..\Nitrogen.DataBase\Nitrogen.DataBase.csproj" />
+    <ProjectReference Include="..\Nitrogen.ILogic\Nitrogen.ILogic.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -27,22 +27,58 @@ namespace Nitrogen.Data.Mysql.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("CreateUser")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
+
+                    b.Property<bool>("DeleteMark")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("Depth")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("EnabledMark")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("Expanded")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Icon")
+                        .HasColumnType("varchar(30) CHARACTER SET utf8mb4")
+                        .HasMaxLength(30);
+
+                    b.Property<bool>("IsLeaf")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<DateTime?>("LastUpdateDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("LastUpdateUser")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
+                        .HasMaxLength(50);
+
+                    b.Property<int>("Left")
+                        .HasColumnType("int");
 
                     b.Property<string>("PermissionCode")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(30) CHARACTER SET utf8mb4")
+                        .HasMaxLength(30);
 
                     b.Property<string>("PermissionName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("varchar(30) CHARACTER SET utf8mb4")
+                        .HasMaxLength(30);
 
                     b.Property<Guid>("PermissionsCategoryId")
                         .HasColumnType("char(36)");
+
+                    b.Property<int>("Right")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SortCode")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UrlAddress")
+                        .HasColumnType("varchar(150) CHARACTER SET utf8mb4")
+                        .HasMaxLength(150);
 
                     b.HasKey("PermissionId");
 

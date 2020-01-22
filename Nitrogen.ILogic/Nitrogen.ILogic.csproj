@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Nitrogen.DataBase\Nitrogen.DataBase.csproj" />
+    <ProjectReference Include="..\Nitrogen.Model\Nitrogen.Model.csproj" />
+  </ItemGroup>
+
+</Project>
