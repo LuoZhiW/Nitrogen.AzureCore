@@ -16,10 +16,11 @@ namespace Nitrogen.AzureCore.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly PermissionsCategoryILogic _permissionsCategoryILogic;
         private readonly PermissionsILogic _permissionsILogic;
-        public HomeController(ILogger<HomeController> logger, PermissionsCategoryILogic CategoryILogic,PermissionsILogic permissionsILogic)
+        // ILogger<HomeController> logger, PermissionsCategoryILogic CategoryILogic,
+        public HomeController(PermissionsILogic permissionsILogic)
         {
-            _logger = logger;
-            _permissionsCategoryILogic = CategoryILogic;
+            //_logger = logger;
+            //_permissionsCategoryILogic = CategoryILogic;
             _permissionsILogic = permissionsILogic;
         }
 
@@ -28,7 +29,7 @@ namespace Nitrogen.AzureCore.Controllers
             // 测试数据读取速度.
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-            var list = _permissionsCategoryILogic.GetList(c => true).ToList();
+           // var list = _permissionsCategoryILogic.GetList(c => true).ToList();
             stopwatch.Stop();
             var time = stopwatch.ElapsedMilliseconds + "ms";
             return View();
@@ -38,10 +39,16 @@ namespace Nitrogen.AzureCore.Controllers
         {
             var jsonData = new
             {
-                authorizeMenu = _permissionsILogic.GetList(c => c.DeleteMark == false),           //导航菜单
+                authorizeMenu = _permissionsILogic.GetList(c => c.DeleteMark == false).ToList(),           //导航菜单
             };
             return Content(JsonConvert.SerializeObject(jsonData)); 
 
+        }
+
+        public IActionResult GetPermissionsList()
+        {
+            var authorizeMenu = _permissionsILogic.GetList(c => c.DeleteMark == false).ToList();        //导航菜单
+            return Content(JsonConvert.SerializeObject(authorizeMenu));
         }
 
 

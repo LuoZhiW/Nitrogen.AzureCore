@@ -352,25 +352,25 @@
                     _html += '<a href="#">'
                     _html += '<i class="' + row.Icon + '"></i><span>' + row.PermissionName + '</span><i class="fa fa-angle-left pull-right"></i>'
                     _html += '</a>'
-                    var childNodes = $.learunindex.jsonWhere(data, function (v) { return v.ParentId == row.ModuleId });
+                    var childNodes = $.learunindex.jsonWhere(data, function (v) { return v.ParentId == row.PermissionId });
                     if (childNodes.length > 0) {
                         _html += '<ul class="treeview-menu">';
                         $.each(childNodes, function (i) {
                             var subrow = childNodes[i];
-                            var subchildNodes = $.learunindex.jsonWhere(data, function (v) { return v.ParentId == subrow.ModuleId });
+                            var subchildNodes = $.learunindex.jsonWhere(data, function (v) { return v.ParentId == subrow.PermissionId });
                             _html += '<li>';
                             if (subchildNodes.length > 0) {
-                                _html += '<a href="#"><i class="' + subrow.Icon + '"></i>' + subrow.FullName + '';
+                                _html += '<a href="#"><i class="' + subrow.Icon + '"></i>' + subrow.PermissionName + '';
                                 _html += '<i class="fa fa-angle-left pull-right"></i></a>';
                                 _html += '<ul class="treeview-menu">';
                                 $.each(subchildNodes, function (i) {
                                     var subchildNodesrow = subchildNodes[i];
-                                    _html += '<li><a class="menuItem" data-id="' + subchildNodesrow.ModuleId + '" href="' + subchildNodesrow.UrlAddress + '"><i class="' + subchildNodesrow.Icon + '"></i>' + subchildNodesrow.FullName + '</a></li>';
+                                    _html += '<li><a class="menuItem" data-id="' + subchildNodesrow.PermissionId + '" href="' + subchildNodesrow.UrlAddress + '"><i class="' + subchildNodesrow.Icon + '"></i>' + subchildNodesrow.PermissionName + '</a></li>';
                                 });
                                 _html += '</ul>';
 
                             } else {
-                                _html += '<a class="menuItem" data-id="' + subrow.ModuleId + '" href="' + subrow.UrlAddress + '"><i class="' + subrow.Icon + '"></i>' + subrow.FullName + '</a>';
+                                _html += '<a class="menuItem" data-id="' + subrow.PermissionId + '" href="' + subrow.UrlAddress + '"><i class="' + subrow.Icon + '"></i>' + subrow.PermissionName + '</a>';
                             }
                             _html += '</li>';
                         });

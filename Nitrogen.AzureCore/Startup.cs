@@ -1,10 +1,13 @@
+using System;
 using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Nitrogen.AzureCore.Data;
 using Nitrogen.Data.Mysql.Data;
 using Nitrogen.ILogic.SystemILogic;
 using Nitrogen.Logic;
@@ -29,6 +32,44 @@ namespace Nitrogen.AzureCore
             {
                 options.UseMySql(Configuration.GetConnectionString("DefaultConnectionStr"));
             });
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseMySql(Configuration.GetConnectionString("DefaultConnectionStr"));
+            });
+
+            services.AddIdentityCore<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+        .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Password settings.
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 1;
+
+                // Lockout settings.
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.MaxFailedAccessAttempts = 5;
+                options.Lockout.AllowedForNewUsers = true;
+
+                // User settings.
+                options.User.AllowedUserNameCharacters =
+                "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+                options.User.RequireUniqueEmail = false;
+            });
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                // Cookie settings
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+
+                options.LoginPath = "/Account/Login";
+                options.AccessDeniedPath = "/Account/AccessDenied";
+                options.SlidingExpiration = true;
+            });
             services.AddTransient<PermissionsCategoryILogic, PermissionsCategoryLogic>();
             services.AddTransient<PermissionsILogic, PermissionsLogic>();
         }
@@ -40,10 +81,11 @@ namespace Nitrogen.AzureCore
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, MySqlDbContext mySqlDbContext)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, MySqlDbContext mySqlDbContext,ApplicationDbContext applicationDbContext)
         {
             // var _dBcontext = new MySqlDbContext(app.ApplicationServices.GetRequiredService<DbContextOptions<MySqlDbContext>>());
             InitializeDb(mySqlDbContext);
+            InitializeDb(applicationDbContext);
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -66,6 +108,9 @@ namespace Nitrogen.AzureCore
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "System",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

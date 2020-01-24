@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nitrogen.Data.Mysql", "Nitr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nitrogen.Logic", "Nitrogen.Logic\Nitrogen.Logic.csproj", "{497C2446-A9C0-4FAC-9627-DA26A7842624}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nitrogen.ILogic", "Nitrogen.ILogic\Nitrogen.ILogic.csproj", "{4E54D98C-9DC3-4B56-8E60-730DB44F9EB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nitrogen.ILogic", "Nitrogen.ILogic\Nitrogen.ILogic.csproj", "{4E54D98C-9DC3-4B56-8E60-730DB44F9EB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnit_Test", "XUnit_Test\XUnit_Test.csproj", "{D8A63DB9-5017-4E91-88A0-299B95C48457}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{4E54D98C-9DC3-4B56-8E60-730DB44F9EB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E54D98C-9DC3-4B56-8E60-730DB44F9EB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E54D98C-9DC3-4B56-8E60-730DB44F9EB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8A63DB9-5017-4E91-88A0-299B95C48457}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8A63DB9-5017-4E91-88A0-299B95C48457}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8A63DB9-5017-4E91-88A0-299B95C48457}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8A63DB9-5017-4E91-88A0-299B95C48457}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
