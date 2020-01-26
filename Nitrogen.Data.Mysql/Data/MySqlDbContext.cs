@@ -2,6 +2,7 @@
 using Nitrogen.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Nitrogen.Data.Mysql.Data
@@ -21,7 +22,13 @@ namespace Nitrogen.Data.Mysql.Data
         /// </summary>
         public DbSet<Permissions> Permissions { get; set; }
 
+        public DbSet<Administrator> Administrators { get; set; }
 
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity(typeof(Administrator)).ToTable("AspNetUsers").HasKey(new string[] { "Id" });
+        }
 
     }
 }

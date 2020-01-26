@@ -86,9 +86,7 @@ namespace Nitrogen.AzureCore
 
             // services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
             services.AddHttpContextAccessor();
-            services.AddTransient<VerifyCodeHelper, VerifyCodeHelper>();
-            services.AddTransient<PermissionsCategoryILogic, PermissionsCategoryLogic>();
-            services.AddTransient<PermissionsILogic, PermissionsLogic>();
+            RegistrationService.RegisterService(services);
         }
 
         private void InitializeDb(DbContext context)

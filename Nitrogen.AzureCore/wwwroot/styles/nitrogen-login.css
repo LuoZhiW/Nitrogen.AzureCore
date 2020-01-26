@@ -52,7 +52,7 @@ fieldset.box dl.form dd .info{display: block;line-height: 14px;font-size: 12px;c
 fieldset.box dl.form dd .passlevel{display: block;font-size: 12px;color: #999;padding-left:1px;}
 fieldset.box dl.form dd .passlevel em{display: inline-block;width: 60px;height: 6px;background: #dee1e8;margin-right: 2px;}
 fieldset.box dl.form dd .passlevel em.bar{background: #449d44;}
-fieldset.box dl.form button.active{background-image:url(../images/loading1.gif);background-repeat:no-repeat;background-position:center 10px;}
+fieldset.box dl.form button.active{background-image:url(/content/images/loading1.gif);background-repeat:no-repeat;background-position:center 10px;}
 .pn_getcode{width: 100px;height: 36px;padding-right: 0;padding-left: 0;border: 1px solid #d5d5d5;font-size: 14px;color: #727272;background: #fafafa;cursor: pointer;margin-left:-4px;border-top-right-radius: 5px;border-bottom-right-radius: 5px;}
 .a_register{color:#3b65a7}
 button[disabled],button[disabled] button{color:#ccc;opacity:1;cursor:default}
