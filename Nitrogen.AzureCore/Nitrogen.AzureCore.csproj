@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -23,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Nitrogen.Data.Mysql\Nitrogen.Data.Mysql.csproj" />
+    <ProjectReference Include="..\Nitrogen.Foundation\Nitrogen.Foundation.csproj" />
     <ProjectReference Include="..\Nitrogen.ILogic\Nitrogen.ILogic.csproj" />
     <ProjectReference Include="..\Nitrogen.Logic\Nitrogen.Logic.csproj" />
   </ItemGroup>

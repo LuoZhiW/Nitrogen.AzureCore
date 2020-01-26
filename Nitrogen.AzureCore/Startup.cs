@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -9,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Nitrogen.AzureCore.Data;
 using Nitrogen.Data.Mysql.Data;
+using Nitrogen.Foundation;
 using Nitrogen.ILogic.SystemILogic;
 using Nitrogen.Logic;
 using Nitrogen.Logic.SystemLogic;
@@ -27,6 +29,17 @@ namespace Nitrogen.AzureCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // session≈‰÷√
+
+
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+            
+                //// Set a short timeout for easy testing.
+                //options.IdleTimeout = TimeSpan.FromSeconds(10);
+                //options.Cookie.HttpOnly = true;
+                //// Make the session cookie essential
+                //options.Cookie.IsEssential = true;
             services.AddControllersWithViews();
             services.AddDbContext<MySqlDbContext>(options =>
             {
@@ -37,7 +50,7 @@ namespace Nitrogen.AzureCore
                 options.UseMySql(Configuration.GetConnectionString("DefaultConnectionStr"));
             });
 
-            services.AddIdentityCore<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
         .AddEntityFrameworkStores<ApplicationDbContext>();
             services.Configure<IdentityOptions>(options =>
             {
@@ -66,10 +79,14 @@ namespace Nitrogen.AzureCore
                 options.Cookie.HttpOnly = true;
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
 
-                options.LoginPath = "/Account/Login";
+                options.LoginPath = "/Account/CheckLogin";
                 options.AccessDeniedPath = "/Account/AccessDenied";
                 options.SlidingExpiration = true;
             });
+
+            // services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddHttpContextAccessor();
+            services.AddTransient<VerifyCodeHelper, VerifyCodeHelper>();
             services.AddTransient<PermissionsCategoryILogic, PermissionsCategoryLogic>();
             services.AddTransient<PermissionsILogic, PermissionsLogic>();
         }
@@ -96,18 +113,20 @@ namespace Nitrogen.AzureCore
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseCookiePolicy();
+            app.UseSession();
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Account}/{action=Login}/{id?}");
                 endpoints.MapControllerRoute(
                     name: "System",
                     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
