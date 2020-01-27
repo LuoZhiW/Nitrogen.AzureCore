@@ -15,9 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nitrogen.Logic", "Nitrogen.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nitrogen.ILogic", "Nitrogen.ILogic\Nitrogen.ILogic.csproj", "{4E54D98C-9DC3-4B56-8E60-730DB44F9EB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnit_Test", "XUnit_Test\XUnit_Test.csproj", "{D8A63DB9-5017-4E91-88A0-299B95C48457}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnit_Test", "XUnit_Test\XUnit_Test.csproj", "{D8A63DB9-5017-4E91-88A0-299B95C48457}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nitrogen.Foundation", "Nitrogen.Foundation\Nitrogen.Foundation.csproj", "{2DFE4640-E68B-4189-89AA-48AD16A8A8DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nitrogen.Foundation", "Nitrogen.Foundation\Nitrogen.Foundation.csproj", "{2DFE4640-E68B-4189-89AA-48AD16A8A8DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

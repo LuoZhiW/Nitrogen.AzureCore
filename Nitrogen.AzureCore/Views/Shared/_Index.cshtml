@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title</title>
+    <!--框架必需start-->
+    <link href="@Url.Content("~/styles/nitrogen-ui.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/nitrogenjs/nitrogen-ui.js")"></script>
+
+    <script src="@Url.Content("~/scripts/jquery/jquery-2.0.3.min.js")"></script>
+    <link href="@Url.Content("~/styles/font-awesome.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/scripts/plugins/jquery-ui/jquery-ui.min.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/scripts/plugins/jquery-ui/jquery-ui.min.js")"></script>
+
+    <link href="@Url.Content("~/scripts/bootstrap/bootstrap.min.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/scripts/bootstrap/bootstrap.min.js")"></script>
+
+    <script src="@Url.Content("~/scripts/plugins/datepicker/WdatePicker.js")"></script>
+    <!--弹窗组件start  zh-->
+    <link href="@Url.Content("~/layer/skin/layer.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/layer/layer.js")"></script>
+    <!--end-->
+    <link href="@Url.Content("~/scripts/plugins/jqgrid/jqgrid.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/scripts/plugins/tree/tree.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/scripts/plugins/datetime/pikaday.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/styles/nitrogen-ui.css")" rel="stylesheet" />
+
+    <script src="@Url.Content("~/scripts/plugins/jqgrid/jqgrid.js")"></script>
+    <script src="@Url.Content("~/scripts/plugins/tree/tree.js")"></script>
+    <script src="@Url.Content("~/scripts/plugins/validator/validator.js")"></script>
+    <script src="@Url.Content("~/scripts/plugins/datepicker/WdatePicker.js")"></script>
+    <script src="@Url.Content("~/scripts/plugins/datepicker/DatePicker.js")"></script>
+    <script src="@Url.Content("~/scripts/plugins/utils/nitrogen-applayout.js")"></script>
+    <script src="@Url.Content("~/scripts/plugins/utils/nitrogen-clientdata.js")"></script>
+    <script src="@Url.Content("~/scripts/plugins/utils/nitrogen-flowlayout.js")"></script>
+    <script src="@Url.Content("~/scripts/plugins/utils/nitrogen-form.js")"></script>
+
+    <script src="@Url.Content("~/scripts/plugins/utils/nitrogen-im.js")"></script>
+    <script src="@Url.Content("~/scripts/plugins/utils/nitrogen-ui.js")"></script>
+
+    <script src="@Url.Content("~/scripts/plugins/utils/nitrogen-webApp.js")"></script>
+    <script src="@Url.Content("~/scripts/plugins/utils/nitrogen-webAppData.js")"></script>
+
+    <style>
+        body {
+            margin: 10px;
+            margin-bottom: 0px;
+        }
+    </style>
+</head>
+<body>
+    @RenderBody()
+    @Html.AntiForgeryToken()
+</body>
+</html>
