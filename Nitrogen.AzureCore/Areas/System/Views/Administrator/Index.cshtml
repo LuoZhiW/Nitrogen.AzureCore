@@ -26,28 +26,20 @@
         $gridTable.jqGrid({
             autowidth: true,
             height: $(window).height() - 136.5,
-            url: "../../CustomerManage/Customer/GetPageListJson",
+            url: "/System/Administrator/GetPageListJson",
             datatype: "json",
             colModel: [
-                { label: '客户主键', name: 'CustomerId', index: 'CustomerId', width: 100, align: 'left', sortable: true, hidden: true },
-                { label: '客户编号', name: 'EnCode', index: 'EnCode', width: 100, align: 'left', sortable: true },
-                { label: '客户名称', name: 'FullName', index: 'FullName', width: 300, align: 'left', sortable: true },
-                {
-                    label: '客户级别', name: 'CustLevelId', index: 'CustLevelId', width: 80, align: 'center', sortable: true,
-                    formatter: function (cellvalue, options, rowObject) {
-                        return top.clientdataItem["Client_Level"][cellvalue];
-                    }
-                },
-                { label: '客户类别', name: 'CustTypeId', index: 'CustTypeId', width: 80, align: 'center', sortable: true },
-                { label: '客户程度', name: 'CustDegreeId', index: 'CustDegreeId', width: 80, align: 'center', sortable: true },
-                { label: '公司行业', name: 'CustIndustryId', index: 'CustIndustryId', width: 80, align: 'center', sortable: true },
-                { label: '联系人', name: 'Contact', index: 'Contact', width: 80, align: 'left', sortable: true },
-                { label: '跟进人员', name: 'TraceUserName', index: 'TraceUserName', width: 80, align: 'left', sortable: true },
-                { label: '最后更新', name: 'ModifyDate', index: 'ModifyDate', width: 130, align: 'left', sortable: true, formatter: "date", formatoptions: { srcformat: 'Y-m-d H:i', newformat: 'Y-m-d H:i' } },
-                { label: '备注', name: 'Description', index: 'Description', width: 200, align: 'left', sortable: true },
+                { label: '管理员主键', name: 'Id', index: 'Id', width: 100, align: 'left', sortable: true, hidden: true },
+                { label: '管理员名称', name: 'UserName', index: 'UserName', width: 180, align: 'left', sortable: true },
+                { label: '邮箱', name: 'Email', index: 'Email', width: 300, align: 'left', sortable: true },
+                { label: '电话', name: 'PhoneNumber', index: 'PhoneNumber', width: 180, align: 'center', sortable: true },
+                { label: '电话', name: 'PhoneNumber', index: 'PhoneNumber', width: 180, align: 'center', sortable: true },
+                { label: '是否锁定', name: 'LockoutEnabled', index: 'LockoutEnabled', width: 180, align: 'center', sortable: true },
+                { label: '是否锁定', name: 'LockoutEnabled', index: 'LockoutEnabled', width:235, align: 'center', sortable: true }
             ],
             viewrecords: true,
             rowNum: 30,
+            autowidth: true,
             rowList: [30, 50, 100],
             pager: "#gridPager",
             sortname: 'ModifyDate',
